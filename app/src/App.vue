@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import MenuItem from './components/MenuItem.vue';
 
 import ChevronUp from 'vue-material-design-icons/ChevronUp.vue';
 import ChevronDown from 'vue-material-design-icons/ChevronDown.vue';
@@ -61,9 +62,49 @@ console.log(openMenu.value);
         <RouterLink to="/">
           <img width="125" src="/images/icons/spotify-logo.png">
         </RouterLink>
+        <div class="my-8"></div>
+        <ul>
+          <RouterLink to="/">
+            <MenuItem class="ml-[1px]" :iconSize="23" name="Home" iconString="home" pageUrl="/" />
+          </RouterLink>
+          <RouterLink to="/search">
+            <MenuItem class="ml-[1px]" :iconSize="24" name="Search" iconString="search" pageUrl="/search" />
+          </RouterLink>
+          <RouterLink to="/library">
+            <MenuItem class="ml-[2px]" :iconSize="23" name="Your Library" iconString="library" pageUrl="/library" />
+          </RouterLink>
+          <div class="py-3.5"></div>
+          <MenuItem :iconSize="24" name="Create Playlist" iconString="playlist" pageUrl="/playlist" />
+          <MenuItem class="-ml-[1px]" :iconSize="27" name="Liked Songs" iconString="liked" pageUrl="/liked" />
+        </ul>
+        <div class="border-b border-b-gray-700"></div>
+        <ul>
+          <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #1</li>
+          <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #2</li>
+          <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #3</li>
+          <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #4</li>
+        </ul>
+      </div>
       </div>
 
-      </div>
+  <div
+      class="
+            fixed
+            right-0
+            top-0
+            w-[calc(100%-240px)]
+            overflow-auto
+            h-full
+            bg-gradient-to-b
+            from-[#1C1C1C]
+            to-black
+        "
+  >
+    <div class="mt-[70px]"></div>
+    <RouterView />
+    <div class="mb-[100px]"></div>
+  </div>
+
   </template>
 
 <style scoped>
