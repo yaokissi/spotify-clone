@@ -87,8 +87,8 @@ console.log(openMenu.value);
       </div>
       </div>
 
-  <div
-      class="
+    <div
+        class="
             fixed
             right-0
             top-0
@@ -99,11 +99,11 @@ console.log(openMenu.value);
             from-[#1C1C1C]
             to-black
         "
-  >
-    <div class="mt-[70px]"></div>
-    <RouterView />
-    <div class="mb-[100px]"></div>
-  </div>
+    >
+      <div class="mt-[70px]"></div>
+       <RouterView />
+      <div class="mb-[100px]"></div>
+    </div>
 
   </template>
 
