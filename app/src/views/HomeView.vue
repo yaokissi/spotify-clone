@@ -27,7 +27,7 @@ import HomeCard from '../components/HomeCard.vue';
             type="button"
 
     >
-      Recomanded for you
+      recommended for you
     </button>
     <div class="py-1.5"></div>
 
@@ -45,7 +45,7 @@ import HomeCard from '../components/HomeCard.vue';
             type="button"
 
     >
-      Recomand radio
+      To make you smarter
     </button>
     <div class="py-1.5"></div>
 
