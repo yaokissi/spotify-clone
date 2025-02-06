@@ -10,15 +10,31 @@ import ChevronLeft from 'vue-material-design-icons/ChevronLeft.vue';
 
 import { useSongStore } from './stores/song'
 import { storeToRefs } from 'pinia';
+import DesktopOnlyMessage from '@/components/DesktopOnlyMessage.vue'
+
 const useSong = useSongStore()
 const { isPlaying, currentTrack } = storeToRefs(useSong)
 
-onMounted(() => { isPlaying.value = false })
+const isDesktop = ref(false)
+
+const checkDevice = () => {
+  const userAgent = navigator.userAgent.toLowerCase()
+  isDesktop.value = !/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)
+}
+onMounted(() => {
+  checkDevice()
+  window.addEventListener('resize', checkDevice)
+
+  isPlaying.value = false
+
+})
 
 let openMenu = ref(false)
 </script>
 
 <template>
+  <DesktopOnlyMessage v-if="!isDesktop" />
+  <div v-else>
   <div>
     <div
         id="TopNav"
@@ -116,6 +132,7 @@ let openMenu = ref(false)
   </div>
 
   <MusicPlayer v-if="currentTrack"/>
+  </div>
 </template>
 
 

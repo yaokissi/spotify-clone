@@ -1,62 +1,62 @@
 {
-    "name": "Diaries Of A Hero",
-    "albumCover": "/images/albumCovers/DiariesOfAHero.png",
-    "releaseYear": "2014",
+    "name": "Himra - Jeune Riche",
+    "albumCover": "/images/albumCovers/jeuneRiche.jpg",
+    "releaseYear": "2024",
     "tracks": [
     {
         "id": 1,
-        "name": "Intro",
-        "path": "/songs/Intro.mp3"
+        "name": "daddy",
+        "path": "/songs/daddy_mp3_54807.mp3"
     },
     {
         "id": 2,
-        "name": "Solitude",
-        "path": "/songs/Solitude.mp3"
+        "name": "Banger",
+        "path": "/songs/himra_banger_clip_officiel_mp3_54753.mp3"
     },
     {
         "id": 3,
-        "name": "Manimal",
-        "path": "/songs/Manimal.mp3"
+        "name": "Big Aka For Aka Kai",
+        "path": "/songs/himra_big_aka_for_aka_kai_mp3_54879.mp3"
     },
     {
         "id": 4,
-        "name": "J5",
-        "path": "/songs/J5.mp3"
+        "name": "Cadeau Feat LaMano",
+        "path": "/songs/himra_feat_la_mano_1.9_cadeau_clip_officiel_mp3_54865.mp3"
     },
     {
         "id": 5,
-        "name": "Throne",
-        "path": "/songs/Throne.mp3"
+        "name": "Freestyle Booska Boss",
+        "path": "/songs/himra_freestyle_booska_boss_mp3_54838.mp3"
     },
     {
         "id": 6,
-        "name": "Scarwhores",
-        "path": "/songs/Scarwhores.mp3"
+        "name": "Drill Ivoire 4",
+        "path": "/songs/himra_freestyle_drill_ivoire_4_x_philipayne_mp3_54895.mp3"
     },
     {
         "id": 7,
-        "name": "Highschool Funeral",
-        "path": "/songs/Highschool Funeral.mp3"
+        "name": "Sexy Feat Ivorian Doll",
+        "path": "/songs/himra_ft_ivorian_doll_sexy_clip_officiel_mp3_54948.mp3"
     },
     {
         "id": 8,
-        "name": "Get Away",
-        "path": "/songs/Get Away.mp3"
+        "name": "R2",
+        "path": "/songs/himra_r2_clip_officiel_mp3_54926.mp3"
     },
     {
         "id": 9,
-        "name": "Victims of Chaos",
-        "path": "/songs/Victims of Chaos.mp3"
+        "name": "Solo",
+        "path": "/songs/himra_solo_clip_officiel_mp3_54936.mp3"
     },
     {
         "id": 10,
-        "name": "Neruda",
-        "path": "/songs/Neruda.mp3"
+        "name": "Vetements",
+        "path": "/songs/himra_vetements_clip_officiel_mp3_54788.mp3"
     },
     {
         "id": 11,
-        "name": "Brother",
-        "path": "/songs/Brother.mp3"
+        "name": "Vêtements",
+        "path": "/songs/himra_vetements_clip_officiel_mp3_54788.mp3"
     }
 ]
 }
