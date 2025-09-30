@@ -12,10 +12,10 @@ const { image, title, subTitle } = toRefs(props)
 </script>
 <template>
 <RouterLink to="library">
-  <div class="bg-[#111111] p-4 rounded-md m-2 hover:bg-[#252525] cursor-pointer">
-    <img class="rounded-md" :src="image" alt="">
-    <div class="text-white pt-4 font-semibold text-[17px]">{{ title }}</div>
-    <div class="text-gray-400 pt-1 pb-3 text-[14px]">{{ subTitle }}</div>
+  <div class="bg-[#111111] p-4 rounded-md m-2 hover:bg-[#252525] cursor-pointer w-[72vw] xs:w-[58vw] sm:w-[44vw] md:w-[220px] flex-shrink-0">
+    <img class="rounded-md w-full h-auto object-cover" :src="image" alt="">
+    <div class="text-white pt-4 font-semibold text-[16px] md:text-[17px]">{{ title }}</div>
+    <div class="text-gray-400 pt-1 pb-3 text-[13px] md:text-[14px]">{{ subTitle }}</div>
   </div>
 </RouterLink>
 </template>

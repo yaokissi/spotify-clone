@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 import MenuItem from './components/MenuItem.vue';
 import MusicPlayer from './components/MusicPlayer.vue'
 import ChevronUp from 'vue-material-design-icons/ChevronUp.vue';
@@ -30,16 +30,19 @@ onMounted(() => {
 })
 
 let openMenu = ref(false)
+const router = useRouter()
+const goBack = () => router.back()
+const goForward = () => router.forward()
 </script>
 
 <template>
-  <DesktopOnlyMessage v-if="!isDesktop" />
-  <div v-else>
+
+
   <div>
     <div
         id="TopNav"
         class="
-            w-[calc(100%-240px)]
+            w-full md:w-[calc(100%-240px)]
             h-[60px]
             fixed
             right-0
@@ -52,10 +55,10 @@ let openMenu = ref(false)
           "
     >
       <div class="flex items-center ml-6">
-        <button type="button" class="rounded-full bg-black p-[1px] cursor-pointer">
+        <button type="button" class="rounded-full bg-black p-[1px] cursor-pointer" @click="goBack">
           <ChevronLeft fillColor="#FFFFFF" :size="30" />
         </button>
-        <button type="button" class="rounded-full bg-black p-[1px] hover:bg-[#] ml-4 cursor-pointer">
+        <button type="button" class="rounded-full bg-black p-[1px] hover:bg-[#] ml-4 cursor-pointer" @click="goForward">
           <ChevronRight fillColor="#FFFFFF" :size="30" />
         </button>
       </div>
@@ -84,7 +87,7 @@ let openMenu = ref(false)
     </div>
 
 
-    <div id="SideNav" class="h-[100%] p-6 w-[240px] fixed z-50 bg-black">
+    <div id="SideNav" class="h-[100%] p-6 w-[240px] fixed z-50 bg-black hidden md:block">
       <RouterLink to="/">
         <img width="125" src="/images/icons/spotify-logo.png">
       </RouterLink>
@@ -111,6 +114,25 @@ let openMenu = ref(false)
         <li class="font-semibold text-[13px] mt-3 text-gray-300 hover:text-white">My Playlist #4</li>
       </ul>
     </div>
+
+    <!-- Mobile bottom/horizontal nav (sous le player) -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-40 h-[56px]">
+      <div class="bg-black/80 backdrop-blur px-3 py-2 h-full">
+        <ul class="flex items-center justify-between overflow-x-auto no-scrollbar">
+          <RouterLink to="/">
+            <MenuItem :iconSize="22" name="Home" iconString="home" pageUrl="/" variant="horizontal" />
+          </RouterLink>
+          <RouterLink to="/search">
+            <MenuItem :iconSize="22" name="Search" iconString="search" pageUrl="/search" variant="horizontal" />
+          </RouterLink>
+          <RouterLink to="/library">
+            <MenuItem :iconSize="22" name="Library" iconString="library" pageUrl="/library" variant="horizontal" />
+          </RouterLink>
+          <MenuItem :iconSize="22" name="Playlist" iconString="playlist" pageUrl="/playlist" variant="horizontal" />
+          <MenuItem :iconSize="22" name="Liked" iconString="liked" pageUrl="/liked" variant="horizontal" />
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div
@@ -118,7 +140,7 @@ let openMenu = ref(false)
             fixed
             right-0
             top-0
-            w-[calc(100%-240px)]
+            w-full md:w-[calc(100%-240px)]
             overflow-auto
             h-full
             bg-gradient-to-b
@@ -128,11 +150,11 @@ let openMenu = ref(false)
   >
     <div class="mt-[70px]"></div>
     <RouterView />
-    <div class="mb-[100px]"></div>
+    <div class="mb-[160px] md:mb-[100px]"></div>
   </div>
 
   <MusicPlayer v-if="currentTrack"/>
-  </div>
+
 </template>
 
 

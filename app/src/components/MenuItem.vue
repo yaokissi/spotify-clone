@@ -8,9 +8,10 @@ const props = defineProps({
   iconString: String,
   iconSize: Number,
   pageUrl: String,
-  name: String
+  name: String,
+  variant: { type: String, default: 'vertical' } // 'vertical' | 'horizontal'
 })
-const { iconString, pageUrl, name, iconSize } = toRefs(props)
+const { iconString, pageUrl, name, iconSize, variant } = toRefs(props)
 
 let icon = ref(null)
 let textIsHover = ref(false)
@@ -40,14 +41,20 @@ const isHover = () => {
 
 <template>
   <li
-      class="flex items-center justify-start pb-4 cursor-pointer"
+      :class="[
+        'cursor-pointer',
+        variant === 'horizontal' ? 'flex flex-col items-center justify-center px-3 pb-2' : 'flex items-center justify-start pb-4'
+      ]"
       @mouseenter="isHover()"
       @mouseleave="isHover()"
   >
     <img :width="iconSize" :src="`/images/icons/${icon}.png`">
     <div
-        :class="textIsHover ? 'text-white ' : 'text-gray-400'"
-        class="font-semibold text-[14px] ml-4 mt-0.5"
+        :class="[
+          textIsHover ? 'text-white' : 'text-gray-400',
+          'font-semibold',
+          variant === 'horizontal' ? 'text-[11px] mt-1 ml-0' : 'text-[14px] ml-4 mt-0.5'
+        ]"
     >
       <span :class="route.path === pageUrl ? 'text-white' : ''">{{ name }}</span>
     </div>

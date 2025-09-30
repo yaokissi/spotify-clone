@@ -51,6 +51,28 @@ onMounted(() => {
       audio.value.currentTime = time;
       seeker.value.value = (100 / audio.value.duration) * audio.value.currentTime;
     });
+
+    // Support tactile pour mobile (seek via touch)
+    const seekFromTouch = (pageX) => {
+      const rect = seekerContainer.value.getBoundingClientRect();
+      const relativeX = Math.min(Math.max(pageX - rect.left, 0), rect.width);
+      const clickPosition = relativeX / rect.width;
+      const time = audio.value.duration * clickPosition;
+      audio.value.currentTime = time;
+      seeker.value.value = (100 / audio.value.duration) * audio.value.currentTime;
+    };
+
+    seekerContainer.value.addEventListener('touchstart', function (e) {
+      if (e.touches && e.touches[0]) {
+        seekFromTouch(e.touches[0].pageX);
+      }
+    }, { passive: true });
+
+    seekerContainer.value.addEventListener('touchmove', function (e) {
+      if (e.touches && e.touches[0]) {
+        seekFromTouch(e.touches[0].pageX);
+      }
+    }, { passive: true });
   }
 })
 
@@ -94,25 +116,26 @@ watch(() => isTrackTimeCurrent.value, (time) => {
       class="
             fixed
             flex
+            flex-col md:flex-row
             items-center
             justify-between
-            bottom-0
+            bottom-[56px] md:bottom-0
             w-full
             z-50
-            h-[90px]
+            h-auto md:h-[90px]
             bg-[#181818]
             border-t
             border-t-[#272727]
         "
   >
-    <div class="flex items-center w-1/4">
-      <div class="flex items-center ml-4">
-        <img class="rounded-sm shadow-2xl" width="55" :src="currentArtist.albumCover">
-        <div class="ml-4">
-          <div class="text-[14px] text-white hover:underline cursor-pointer">
+    <div class="flex items-center w-full md:w-1/4 px-4 md:px-0 py-3 md:py-0">
+      <div class="flex items-center ml-4 min-w-0 w-full md:w-auto">
+        <img class="rounded-sm shadow-2xl flex-shrink-0" width="55" :src="currentArtist.albumCover">
+        <div class="ml-4 min-w-0">
+          <div class="text-white cursor-pointer text-sm md:text-[14px] truncate max-w-[60vw] md:max-w-[240px]">
             {{ currentTrack.name }}
           </div>
-          <div class="text-[11px] text-gray-500 hover:underline hover:text-white cursor-pointer">
+          <div class="text-gray-500 hover:text-white cursor-pointer text-xs md:text-[11px] truncate max-w-[60vw] md:max-w-[240px]">
             {{ currentArtist.name }}
           </div>
         </div>
@@ -123,13 +146,13 @@ watch(() => isTrackTimeCurrent.value, (time) => {
       </div>
     </div>
 
-    <div class="max-w-[35%] mx-auto w-2/4 mb-3">
+    <div class="max-w-full md:max-w-[35%] mx-auto w-full md:w-2/4 mb-3 px-4 md:px-0">
       <div class="flex-col items-center justify-center">
         <div class="buttons flex items-center justify-center h-[30px]">
           <button class="mx-2">
             <SkipBackward fillColor="#FFFFFF" :size="25" @click="useSong.prevSong(currentTrack)"/>
           </button>
-          <button class="p-1 rounded-full mx-3 bg-white" @click="useSong.playOrPauseThisSong(currentArtist, currentTrack)">
+          <button class="p-1 rounded-full mx-3 bg-white" @click="useSong.playOrPauseThisSong(currentArtist, currentTrack)" @touchstart.prevent="useSong.playOrPauseThisSong(currentArtist, currentTrack)" @touchend.prevent>
             <Play v-if="!isPlaying" fillColor="#181818" :size="25" />
             <Pause v-else fillColor="#181818" :size="25" />
           </button>
@@ -178,8 +201,10 @@ watch(() => isTrackTimeCurrent.value, (time) => {
       </div>
     </div>
 
-    <div class="flex items-center w-1/4 justify-end pr-10">
-      <MusicPlayerVolume />
+    <div class="flex items-center w-full md:w-1/4 justify-end pr-4 md:pr-10 py-2 md:py-0">
+      <div class="hidden md:flex">
+        <MusicPlayerVolume />
+      </div>
     </div>
   </div>
 </template>

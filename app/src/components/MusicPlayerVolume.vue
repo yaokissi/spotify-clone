@@ -26,7 +26,7 @@ onMounted(() => {
   <VolumeMute v-if="vol == 0" fillColor="#FFFFFF" :size="20" />
   <VolumeHigh v-else fillColor="#FFFFFF" :size="20" />
   <div
-      class="flex items-center ml-2 w-[150px] relative mt-2 mb-[23px]"
+      class="flex items-center ml-2 w-[150px] relative"
       @mouseenter="isHover = true"
       @mouseleave="isHover = false"
   >
@@ -35,10 +35,11 @@ onMounted(() => {
         ref="volume"
         type="range"
         class="
-                mt-[24px]
                 absolute
+                top-1/2
+                -translate-y-1/2
                 rounded-full
-                my-2
+                my-0
                 w-full
                 h-0
                 z-40
@@ -50,11 +51,11 @@ onMounted(() => {
         :class="{ 'rangeDotHidden': !isHover }"
     >
     <div
-        class="pointer-events-none mt-[6px] absolute h-[4px] z-10 inset-y-0 left-0 w-0"
+        class="pointer-events-none absolute h-[4px] z-10 inset-y-0 left-0 w-0 top-1/2 -translate-y-1/2"
         :style="`width: ${vol}%;`"
         :class="isHover ? 'bg-green-500' : 'bg-white'"
     />
-    <div class="absolute h-[4px] z-[-0] mt-[6px] inset-y-0 left-0 w-full bg-gray-500 rounded-full" />
+    <div class="absolute h-[4px] z-[-0] inset-y-0 left-0 w-full bg-gray-500 rounded-full top-1/2 -translate-y-1/2" />
   </div>
 </template>
 
