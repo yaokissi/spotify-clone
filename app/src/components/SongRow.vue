@@ -36,9 +36,12 @@ onMounted(() => {
       class="flex items-center justify-between rounded-md hover:bg-[#2A2929]"
       @mouseenter="isHover = true"
       @mouseleave="isHover = false"
+      @click="useSong.playOrPauseThisSong(artist, track)"
+      role="button"
+      tabindex="0"
   >
     <div class="flex items-center w-full py-1.5">
-      <div v-if="isHover" class="w-[40px] ml-[14px] mr-[6px] cursor-pointer">
+      <div v-if="isHover" class="w-[40px] ml-[14px] mr-[6px] cursor-pointer" @click.stop>
         <Play
             v-if="!isPlaying"
             fillColor="#FFFFFF"
@@ -70,7 +73,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex items-center">
-      <button type="button" v-if="isHover">
+      <button type="button" v-if="isHover" @click.stop>
         <Heart fillColor="#1BD760" :size="22"/>
       </button>
       <div

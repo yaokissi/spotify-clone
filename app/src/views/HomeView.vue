@@ -13,7 +13,7 @@ import HomeCard from '../components/HomeCard.vue';
   </button>
   <div class="py-1.5"></div>
 
-  <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pr-2" style="touch-action: pan-x;">
+  <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pr-2" style="touch-action: pan-y pan-x;">
     <HomeCard image="https://picsum.photos/id/30/300/300" title="Title is here" subTitle="Subtitle is here" />
     <HomeCard image="https://picsum.photos/id/45/300/300" title="Title is here" subTitle="Subtitle is here" />
     <HomeCard class="md:block hidden" image="https://picsum.photos/id/65/300/300" title="Title is here" subTitle="Subtitle is here" />
@@ -31,7 +31,7 @@ import HomeCard from '../components/HomeCard.vue';
     </button>
     <div class="py-1.5"></div>
 
-    <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pr-2" style="touch-action: pan-x;">
+    <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pr-2" style="touch-action: pan-y pan-x;">
       <HomeCard image="https://picsum.photos/id/30/300/300" title="Title is here" subTitle="Subtitle is here" />
       <HomeCard image="https://picsum.photos/id/45/300/300" title="Title is here" subTitle="Subtitle is here" />
       <HomeCard class="md:block hidden" image="https://picsum.photos/id/65/300/300" title="Title is here" subTitle="Subtitle is here" />
@@ -49,7 +49,7 @@ import HomeCard from '../components/HomeCard.vue';
     </button>
     <div class="py-1.5"></div>
 
-    <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pr-2" style="touch-action: pan-x;">
+    <div class="flex items-center space-x-3 overflow-x-auto no-scrollbar pr-2" style="touch-action: pan-y pan-x;">
       <HomeCard image="https://picsum.photos/id/30/300/300" title="Title is here" subTitle="Subtitle is here" />
       <HomeCard image="https://picsum.photos/id/45/300/300" title="Title is here" subTitle="Subtitle is here" />
       <HomeCard class="md:block hidden" image="https://picsum.photos/id/65/300/300" title="Title is here" subTitle="Subtitle is here" />
